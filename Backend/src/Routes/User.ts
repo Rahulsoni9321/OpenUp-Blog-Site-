@@ -3,6 +3,7 @@ import { withAccelerate } from "@prisma/extension-accelerate";
 import { decode, sign, verify } from 'hono/jwt'
 import { jwt } from "hono/jwt";
 import { Hono } from "hono";
+import { SiginInput, SignupInput } from "@index.developers/common";
 
  export const UserRoute = new Hono<{
   Bindings:{
@@ -10,6 +11,7 @@ import { Hono } from "hono";
     JWT_SECRET_KEY:string
   }
 }>();
+
 
 UserRoute.post("/signup", async (c) => {
     const prisma = new PrismaClient({
@@ -33,7 +35,9 @@ UserRoute.post("/signup", async (c) => {
     //   }
   
       //creating a new user
-  
+
+      const {success}=SignupInput.safeParse(body)
+      if (success) {
       const newuser =await prisma.user.create({
        data:{
          FirstName:body.FirstName,
@@ -52,6 +56,13 @@ UserRoute.post("/signup", async (c) => {
         token:jwt
         
       });
+    }
+    else {
+      c.status(403)
+      return c.json({
+        message:"Invalid Credentials types.Please try again"
+      })
+    }
   
     }   
      //if unknown error occurs
@@ -70,9 +81,13 @@ UserRoute.post("/signup", async (c) => {
     }).$extends(withAccelerate());
   
     const body=await c.req.json();
+
+
   
     try{
   
+      const {success} =SiginInput.safeParse(body);
+      if (success){
       const findinguser=await prisma.user.findFirst({
         where:{
           Email:body.Email,
@@ -94,6 +109,14 @@ UserRoute.post("/signup", async (c) => {
         message:"Incorrect Credentials.Please try again."
       })
     }
+    else {
+      c.status(403)
+      return c.json({
+        message:"Invalid Credential type. Please try again."
+      })
+
+    }
+    }
     catch(error){
       c.status(400);
       return c.json({
@@ -106,3 +129,8 @@ UserRoute.post("/signup", async (c) => {
   
 
 
+
+
+
+
+  

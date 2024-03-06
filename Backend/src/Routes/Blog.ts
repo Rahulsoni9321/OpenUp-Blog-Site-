@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import { verify } from "hono/jwt";
 import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
+import { BlogInput, UpdateBlogInput } from "@index.developers/common";
 
 export const BlogRoute = new Hono<{
   Bindings: {
@@ -46,6 +47,9 @@ BlogRoute.post("/", async (c) => {
   }).$extends(withAccelerate());
 
   try {
+
+    const {success}=BlogInput.safeParse(body)
+    if (success){
     const NewBlog=await prisma.blog.create({
       data: {
         Title: body.Title,
@@ -59,6 +63,14 @@ BlogRoute.post("/", async (c) => {
       message: "Blog Published Successfully.",
       Blog:NewBlog
     });
+  
+  }
+  else{
+    c.status(403)
+    return c.json({
+      message:'Invalid Blog Credentials. Please try again.'
+    })
+  }
   } 
   catch (error) {
     console.log(error)
@@ -71,13 +83,20 @@ BlogRoute.post("/", async (c) => {
 });
 
 BlogRoute.put("/", async (c) => {
+
+  
   const body = await c.req.json();
+ 
+ 
 
   const prisma = new PrismaClient({
     datasourceUrl: c.env.DATABASE_URL,
   }).$extends(withAccelerate());
 
   try {
+
+    const {success}=UpdateBlogInput.safeParse(body)
+    if (success) {
     const ChangedBlog = await prisma.blog.update({
       where: {
         id: body.id,
@@ -92,7 +111,14 @@ BlogRoute.put("/", async (c) => {
       message: "Blog Update Successfully.",
       UpdatedBlog:ChangedBlog
     });
-  } catch (error) {
+  } 
+  else{
+    c.status(403)
+    return c.json({
+      message:'Invalid Blog Credentials. Please try again.'
+    })
+  }
+}catch (error) {
     c.status(411);
     return c.json({
       message: "Something went wrong while Updating the Blog.Please try again.",
@@ -108,7 +134,19 @@ BlogRoute.get("/bulk", async (c) => {
   }).$extends(withAccelerate());
 
   try {
-    const AllBlogs = await prisma.blog.findMany();
+    const AllBlogs = await prisma.blog.findMany({
+      select:{
+        Content:true,
+        Title:true,
+        id:true,
+        Author:{
+          select:{
+            FirstName:true,
+            LastName:true
+          }
+        }
+      }
+    });
 
     return c.json({
       AllBlogs: AllBlogs,

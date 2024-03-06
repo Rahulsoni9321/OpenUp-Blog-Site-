@@ -1,0 +1,1 @@
+export const BACKEND_URL="https://medium.rahulsoni3108.workers.dev/api/v1"
