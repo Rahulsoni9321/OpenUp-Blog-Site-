@@ -160,6 +160,7 @@ BlogRoute.get("/bulk", async (c) => {
   }
 });
 
+
 BlogRoute.get("/:id", async (c) => {
   const blogid = c.req.param("id");
   const prisma = new PrismaClient({
@@ -171,6 +172,17 @@ BlogRoute.get("/:id", async (c) => {
       where: {
         id: Number(blogid),
       },
+      select:{
+        Content:true,
+        Title:true,
+        id:true,
+        Author:{
+          select:{
+            FirstName:true,
+            LastName:true
+          }
+        }
+      }
     });
 
     return c.json({
@@ -184,3 +196,5 @@ BlogRoute.get("/:id", async (c) => {
     });
   }
 });
+
+

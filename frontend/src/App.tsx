@@ -4,6 +4,7 @@ import { Signin } from "./pages/Signin"
 import { Toaster } from "react-hot-toast"
 import { Blog } from "./pages/Blog"
 import { AllBlogs } from "./pages/Blogs"
+import { CreateBlog } from "./pages/CreateNewBlog"
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Route path="/Signin" element={<Signin></Signin>}></Route>
       <Route path="/Blog/:id" element={<Blog></Blog>}></Route>
       <Route path="/Blog" element={<AllBlogs></AllBlogs>}></Route>
+      <Route path="/Blog/Create" element={<CreateBlog/>}></Route>
      </Routes>
      <Toaster></Toaster>
      </BrowserRouter>

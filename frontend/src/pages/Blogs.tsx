@@ -1,4 +1,3 @@
-import { typeBlogInput } from "@index.developers/common";
 import { BlogCard } from "../Component/BlogCard";
 import { AppBar } from "../Component/AppBar";
 import { UseBlogs } from "../Hooks/useBlogs";
@@ -10,8 +9,8 @@ export const AllBlogs = () => {
   if (loading) {
     return (
       <div className="w-full">
-        <div className="  w-full bg-white-300 rounded-md bg-gray-800 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-30 border border-gray-100">
-          <AppBar></AppBar>
+        <div className="  bg-white-300 rounded-md bg-gray-800 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-30 border border-gray-100">
+          <AppBar title="New Blog"></AppBar>
         </div>
 
         <BlogSkeleton></BlogSkeleton>
@@ -23,9 +22,10 @@ export const AllBlogs = () => {
 
   return (
     <>
-      <div className="  w-full bg-white-300 rounded-md bg-gray-800 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-30 border border-gray-100">
-        <AppBar></AppBar>
-      </div>
+        <div className="  bg-white-300 rounded-md bg-slate-500 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-30 border border-gray-100">
+          <AppBar title="New Blog"></AppBar>
+        </div>
+      
 
       <div className="m-10 ml-20 ">
         {Allblog && Allblog.length > 0 ? (
@@ -33,7 +33,7 @@ export const AllBlogs = () => {
             return (
               <>
                 {" "}
-                <div className="w-9/12 cursor-pointer hover:shadow-xl">
+                <div className="w-10/12 cursor-pointer hover:shadow-xl rounded-sm hover:bg-slate-200">
                   <BlogCard
                     id={blog.id}
                     AuthorFirstName={blog.Author.FirstName}
