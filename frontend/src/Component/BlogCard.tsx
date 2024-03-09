@@ -27,7 +27,7 @@ interface BlogCardProp {
           <div className="text-sm text-zinc-800 pt-0.5 ">{Content}</div>
           </div>
           <div className="text-xs bg-gray-300 w-22 text-center mt-2 absolute  bottom-2 text-gray-700 px-1 py-0.5 rounded-md font-normal hidden md:block">
-                  {Math.ceil(Content.length / 100)} minutes read
+                  {Math.ceil(Content.length / 400)} minutes read
                 </div>       </div>
         </Link>
       </>

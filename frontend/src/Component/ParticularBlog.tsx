@@ -18,7 +18,7 @@ export const ParticularBlog = ({ Blog }: { Blog: typeBlog }) => {
               <div className="flex gap-2 items-center text-sm text-gray-700 font-normal mt-5 mb-6">
                 Posted on August 22,2023{" "} <span className="px-0.5">·</span>
                 <div className="text-xs bg-gray-300 text-gray-700 p-1 rounded-md font-normal ">
-                  {Math.ceil(Blog.Content.length / 100)} minutes read
+                  {Math.ceil(Blog.Content.length / 400)} minutes read
                 </div>
               </div>
               <div className="text-sm w-full text-black font-medium  text-opacity-90">

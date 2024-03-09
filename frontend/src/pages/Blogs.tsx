@@ -2,6 +2,7 @@ import { BlogCard } from "../Component/BlogCard";
 import { AppBar } from "../Component/AppBar";
 import { UseBlogs } from "../Hooks/useBlogs";
 import { BlogSkeleton } from "../Component/BlogSkeleton";
+import { Link } from "react-router-dom";
 
 export const AllBlogs = () => {
   const { loading, Allblog } = UseBlogs();
@@ -47,7 +48,7 @@ export const AllBlogs = () => {
             );
           })
         ) : (
-          <div>No Blogs to show Create One?</div>
+          <div className="w-full flex justify-center items-center text-3xl font-semibold text-black">No Blogs to show.  <Link className="underline underline-offset-1 text-cyan-500 hover:text-gray-700" to={'/Blog/Create'}> Create One?</Link></div>
         )}
       </div>
     </>

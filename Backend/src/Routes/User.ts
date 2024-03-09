@@ -1,7 +1,6 @@
 import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { decode, sign, verify } from 'hono/jwt'
-import { jwt } from "hono/jwt";
 import { Hono } from "hono";
 import { SiginInput, SignupInput } from "@index.developers/common";
 
@@ -11,6 +10,31 @@ import { SiginInput, SignupInput } from "@index.developers/common";
     JWT_SECRET_KEY:string
   }
 }>();
+
+async function Middleware(c:any, next:any) {
+  const token = c.req.header("authorization") || "";
+  try {
+    const jwttoken = token?.split(" ")[1];
+    const CheckingToken = await verify(jwttoken, c.env.JWT_SECRET_KEY);
+    console.log(CheckingToken)
+    if (CheckingToken) {
+      c.set("userid", CheckingToken.userid);
+      await next();
+    } else {
+      c.status(403);
+      return c.json({
+        message: "Invalid Token.",
+      });
+    }
+  } catch (error) {
+    
+    c.status(403);
+    return c.json({
+      message: "You are not logged in. Please try again.",
+      details: error,
+    });
+  }
+};
 
 
 UserRoute.post("/signup", async (c) => {
@@ -43,6 +67,7 @@ UserRoute.post("/signup", async (c) => {
          FirstName:body.FirstName,
          LastName:body.LastName,
          Email:body.Email,
+         Bio:body.Bio,
          Password:body.Password,
        }
       })
@@ -67,6 +92,7 @@ UserRoute.post("/signup", async (c) => {
     }   
      //if unknown error occurs
     catch(error) {
+      console.log(error)
       return c.json({
        message :{ message:"Something Went Wrong. Please Try again",
         details:error
@@ -129,7 +155,11 @@ UserRoute.post("/signup", async (c) => {
   
 
 
+// UserRoute.get("/userprofile",Middleware,async (c)=>{
 
+
+               
+// })
 
 
 

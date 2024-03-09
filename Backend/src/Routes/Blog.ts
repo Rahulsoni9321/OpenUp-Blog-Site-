@@ -179,7 +179,8 @@ BlogRoute.get("/:id", async (c) => {
         Author:{
           select:{
             FirstName:true,
-            LastName:true
+            LastName:true,
+            Bio:true
           }
         }
       }

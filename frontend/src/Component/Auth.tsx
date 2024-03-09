@@ -8,6 +8,7 @@ import {toast} from "react-hot-toast"
 export const Auth = ({ authtype }: { authtype: "signin" | "signup" }) => {
   const navigate = useNavigate();
   const [message,setmessage]=useState("")
+  const [tracker,settracker]=useState(false)
   const [postInputs, setpostInputs] = useState<typeSignupInput>({
     Email: "",
     FirstName: "",
@@ -17,6 +18,7 @@ export const Auth = ({ authtype }: { authtype: "signin" | "signup" }) => {
 
   const SendRequest = async (): Promise<void> => {
     try {
+      settracker(true)
       const response = await axios.post(
         `${BACKEND_URL}/user/${authtype === "signup" ? "signup" : "signin"}`,
         postInputs,
@@ -26,17 +28,21 @@ export const Auth = ({ authtype }: { authtype: "signin" | "signup" }) => {
           },
         }
       );
+      console.log(response.data.message)
       const jwt = response.data.token;
       
       {authtype==="signin"?toast.success("Signed In successfully"):toast.success("Signed Up successfully")};
+      settracker(false)
       localStorage.setItem("token", jwt);
       navigate("/Blog");
     } catch (error: any) {
         if (error && error.response && error.response.data) {
-        setmessage(error.response.data.message)
+          settracker(false)
+          setmessage(error.response.data.message)
       toast.error(error.response.data.message);
         }
     else {
+      settracker(false)
         toast.error("Something went wrong. Please try again.")
     }
     setTimeout(() => {
@@ -106,7 +112,20 @@ export const Auth = ({ authtype }: { authtype: "signin" | "signup" }) => {
               onClick={SendRequest}
               className="bg-black hover:bg-gray-900 text-gray-200 mt-2 w-11/12 md:w-10/12 py-1.5 font-normal text-xs  border border-gray-400 rounded-lg shadow"
             >
-              Submit
+               {tracker ? (
+                    <div className="flex justify-center  items-center">
+                      <div
+                        className="animate-spin inline-block w-5 h-5 mr-4 border-[3px] border-current border-t-transparent text-white rounded-full "
+                        role="status"
+                        aria-label="loading"
+                      >
+                        <span className="sr-only">Loading...</span>
+                      </div>
+                      <p>{authtype=="signin" ? "Signing in.....":"Signing up...."}</p>
+                    </div>
+                  ) : (
+                   <p>{authtype=="signin" ? "Sign in":"Sign up"}</p>  
+                  )}
             </button>
           </div>
         </div>

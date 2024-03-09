@@ -2,29 +2,49 @@ import axios from "axios";
 import { ChangeEvent, useState } from "react";
 import { BACKEND_URL } from "../config";
 import { useNavigate } from "react-router-dom";
-import { AppBar } from "./AppBar";
+import toast from "react-hot-toast";
+
 
 export const CreatePost = () => {
     const navigate = useNavigate();
     const [title, settitle] = useState("");
     const [content, setcontent] = useState("");
+    const [tracker, settracker] = useState(false);
 
     const PostBlog=async () => {
-        const response = await axios.post(
-            `${BACKEND_URL}/blog`,
-            {
-               Title: title,
-               Content: content,
+   try  
+   {
+    settracker(true)
+    const response = await axios.post(
+        `${BACKEND_URL}/blog`,
+        {
+            Title: title,
+            Content: content,
+        },
+        {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem(
+                    "token"
+                )}`,
             },
-            {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem(
-                        "token"
-                    )}`,
-                },
-            }
-        );
+        }
+    );
+    settracker(false)
+    toast.success("Blog Published Successfully.")
+    setTimeout(() => {
         navigate(`/Blog/${response.data.Blog.id}`);
+        
+    }, 400);
+
+}
+catch (error){
+    if (error){
+        toast.error("Something went Wrong while Publishing. Please try again." || error )
+    }
+    else {
+        toast.error("Something went Wrong while Publishing. Please try again." || error )
+    }
+}
     }
 
     return (
@@ -51,7 +71,20 @@ export const CreatePost = () => {
                         onClick={PostBlog}
                         className="bg-green-600 text-white px-4 my-10 w-24 rounded-xl h-8"
                     >
-                        Publish
+                       {tracker ? (
+                    <div className="flex justify-center  items-center">
+                      <div
+                        className="animate-spin inline-block w-5 h-5 mr-4 border-[3px] border-current border-t-transparent text-white rounded-full "
+                        role="status"
+                        aria-label="loading"
+                      >
+                        <span className="sr-only">Loading...</span>
+                      </div>
+                      <p>Publishing...</p>
+                    </div>
+                  ) : (
+                   <p>{"Publish"}</p>  
+                  )}
                     </button>
                 </div>
             </div>

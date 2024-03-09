@@ -4,7 +4,8 @@ export const SignupInput=z.object({
     FirstName:z.string(),
     LastName:z.string(),
     Email:z.string().email(),
-    Password:z.string().min(6,{message:"Password is too short just like your dick."}).max(16)
+    Bio:z.string().max(100,{message:"Bio should be within 100 characters."}).optional(),
+    Password:z.string().min(6,{message:"Password is too short."}).max(16)
 })
 
 export type typeSignupInput=z.infer<typeof SignupInput>

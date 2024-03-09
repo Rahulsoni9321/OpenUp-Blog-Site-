@@ -20,6 +20,7 @@ model User {
   LastName String
   Email String    @unique
   Password String
+  Bio String?
   Blog  Blog[]
 
 }
