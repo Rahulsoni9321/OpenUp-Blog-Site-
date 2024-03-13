@@ -66,7 +66,7 @@ export function InfiniteScrollcomponent() {
                 return (
                   <>
                     {" "}
-                    <div className="w-10/12 infinite-scroll  cursor-pointer hover:shadow-xl rounded-sm hover:bg-slate-200">
+                    <div className="w-11/12 md:w-10/12 infinite-scroll  cursor-pointer hover:shadow-xl rounded-sm hover:bg-slate-200">
                       <BlogCard
                         id={blog.id}
                         AuthorFirstName={blog.Author.FirstName}

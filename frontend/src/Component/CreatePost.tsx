@@ -1,15 +1,18 @@
 import axios from "axios";
-import { ChangeEvent, useState } from "react";
+import {  useState } from "react";
 import { BACKEND_URL } from "../config";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 
 export const CreatePost = () => {
     const navigate = useNavigate();
     const [title, settitle] = useState("");
-    const [content, setcontent] = useState("");
     const [tracker, settracker] = useState(false);
+    const [content, setcontent] = useState("");
+
 
     const PostBlog=async () => {
    try  
@@ -50,26 +53,22 @@ catch (error){
     return (
         <>
           
-            <div className="flex justify-center pt-12 font-serif">
-                <div className="">
+            <div className="flex justify-center pt-12 px-20 font-serif">
+                <div className="w-10/12">
                     <input
                         onChange={(e) => {
                             settitle(e.target.value);
                         }}
                         type="text"
-                        className="outline-none border-none text-6xl text-black placeholder-gray-500 placeholder-opacity-50 my-4"
+                        className="w-10/12 outline-none border-none text-6xl text-black placeholder-gray-500 placeholder-opacity-50 my-4"
                         placeholder="Title"
                     ></input>
-                    <div>
-                        <TextEditor
-                            onChange={(e) => {
-                                setcontent(e.target.value);
-                            }}
-                        />
+                    <div className="w-full">
+                        <TextEditor content={content} setcontent={setcontent} />
                     </div>
                     <button
                         onClick={PostBlog}
-                        className="bg-green-600 text-white px-4 my-10 w-24 rounded-xl h-8"
+                        className="bg-black text-white px-4 my-10 w-28 rounded-2xl h-8"
                     >
                        {tracker ? (
                     <div className="flex justify-center  items-center">
@@ -80,7 +79,7 @@ catch (error){
                       >
                         <span className="sr-only">Loading...</span>
                       </div>
-                      <p>Publishing...</p>
+                      <p className="text-sm font-normal">Publishing...</p>
                     </div>
                   ) : (
                    <p>{"Publish"}</p>  
@@ -93,14 +92,17 @@ catch (error){
 };
 
 // Define or import the TextEditor component
-function TextEditor({ onChange }: { onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void }) {
-    return (
-        <textarea
-            onChange={onChange}
-            className="text-lg overflow-auto text-gray-800 w-full h-lvh outline-none"
-            placeholder="Tell your story....."
-        ></textarea>
-    );
+function TextEditor({content,setcontent}:{
+    content:string,
+    setcontent:React.Dispatch<React.SetStateAction<string>>
+}) {
+
+    return (<>
+        <ReactQuill theme="snow" value={content} onChange={setcontent} placeholder="Tell your story....." className="text-lg overflow-auto text-gray-800 w-11/12 h-lvh  placeholder-opacity-20"/>
+
+        
+        </>
+        );
 }
 
 

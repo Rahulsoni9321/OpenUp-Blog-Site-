@@ -21,8 +21,8 @@ export const ParticularBlog = ({ Blog }: { Blog: typeBlog }) => {
                   {Math.ceil(Blog.Content.length / 400)} minutes read
                 </div>
               </div>
-              <div className="text-sm w-full text-black font-medium  text-opacity-90">
-                {Blog.Content}
+              <div className="text-sm w-full text-black font-medium  text-opacity-90" dangerouslySetInnerHTML={{__html:Blog.Content}}>
+                
               </div>
             </div>
           </div>
