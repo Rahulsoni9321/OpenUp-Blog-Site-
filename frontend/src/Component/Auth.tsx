@@ -52,14 +52,14 @@ export const Auth = ({ authtype }: { authtype: "signin" | "signup" }) => {
   };
   return (
     <>
-      <div className="flex justify-center h-screen items-center font-sans">
+      <div className="flex justify-center h-screen items-center font-sans bg-gradient-to-tr from-gray-950 via-gray-700 to-gray-400">
         <div className="w-3/4 px-8">
           <div className=" mb-2 text-center">
-            <div className="text-xl xs:text-2xl md:text-3xl text-black font-extrabold">
+            <div className="text-xl xs:text-2xl md:text-4xl text-black dark:text-gray-200 font-bold">
               {authtype === "signin" ? "Sign In" : "Create an account"}
             </div>
           </div>
-          <div className="text-sm flex justify-center   text-gray-500">
+          <div className="text-sm flex justify-center  dark:text-gray-300 text-gray-500">
             <div className="  font-normal">
               {authtype == "signin"
                 ? "Don't have an account?"
@@ -110,7 +110,7 @@ export const Auth = ({ authtype }: { authtype: "signin" | "signup" }) => {
             <p className="mt-2 text-red-500 text-sm font-normal">{message}</p>
             <button
               onClick={SendRequest}
-              className="bg-black hover:bg-gray-900 text-gray-200 mt-2 w-11/12 md:w-10/12 py-1.5 font-normal text-xs  border border-gray-400 rounded-lg shadow"
+              className="bg-black hover:bg-gray-900 text-gray-200 mt-2 w-11/12 md:w-10/12 py-1.5 font-normal text-xs rounded-lg shadow"
             >
                {tracker ? (
                     <div className="flex justify-center  items-center">
@@ -157,7 +157,7 @@ function LabelledInput({
           : "my-2"
       }
     >
-      <label className="block pb-0.5  text-xs font-bold text-gray-900">
+      <label className="block pb-1  text-xs font-semibold text-gray-900 dark:text-gray-200">
         {label}
       </label>
       <input

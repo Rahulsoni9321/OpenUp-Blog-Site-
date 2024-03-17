@@ -56,7 +56,7 @@ export function InfiniteScrollcomponent() {
               </div>
             }
             endMessage={
-              <div className="text-center  text-lg font-semibold mt-6">
+              <div className="text-center  text-lg font-semibold p-6">
                 Wow..!! You've reached the end...👏
               </div>
             }
