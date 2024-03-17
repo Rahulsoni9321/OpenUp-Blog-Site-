@@ -60,7 +60,7 @@ catch (error){
                             settitle(e.target.value);
                         }}
                         type="text"
-                        className="w-10/12 outline-none border-none text-6xl text-black placeholder-gray-500 placeholder-opacity-50 my-4"
+                        className="w-10/12 outline-none bg-gray-800/5  border-none text-6xl dark:text-gray-200 text-black placeholder-gray-500 placeholder-opacity-50 my-4"
                         placeholder="Title"
                     ></input>
                     <div className="w-full">
@@ -98,7 +98,7 @@ function TextEditor({content,setcontent}:{
 }) {
 
     return (<>
-        <ReactQuill theme="snow" value={content} onChange={setcontent} placeholder="Tell your story....." className="text-lg overflow-auto text-gray-800 w-11/12 h-lvh  placeholder-opacity-20"/>
+        <ReactQuill theme="snow" value={content} onChange={setcontent} placeholder="Tell your story....." className="text-xl overflow-auto text-gray-800 dark:text-gray-300 w-11/12 h-lvh dark:placeholder-gray-100 placeholder-opacity-20"/>
 
         
         </>

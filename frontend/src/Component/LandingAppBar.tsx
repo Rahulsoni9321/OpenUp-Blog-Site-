@@ -4,7 +4,7 @@ import { TfiWrite } from "react-icons/tfi";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 
 
-export const LandingAppBar = ({id}:{id:string}) => {
+export const LandingAppBar = ({id}:{id:string }) => {
     const navigate = useNavigate();
     const scrollToSection = (id:string) => {
       const element = document.getElementById(id);
