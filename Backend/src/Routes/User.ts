@@ -18,7 +18,7 @@ async function Middleware(c:any, next:any) {
     const CheckingToken = await verify(jwttoken, c.env.JWT_SECRET_KEY);
     console.log(CheckingToken)
     if (CheckingToken) {
-      c.set("userid", CheckingToken.userid);
+      c.set("authorid", CheckingToken.userid);
       await next();
     } else {
       c.status(403);
@@ -67,7 +67,6 @@ UserRoute.post("/signup", async (c) => {
          FirstName:body.FirstName,
          LastName:body.LastName,
          Email:body.Email,
-         Bio:body.Bio,
          Password:body.Password,
        }
       })
@@ -155,11 +154,6 @@ UserRoute.post("/signup", async (c) => {
   
 
 
-// UserRoute.get("/userprofile",Middleware,async (c)=>{
-
-
-               
-// })
 
 
 

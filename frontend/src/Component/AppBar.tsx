@@ -6,24 +6,24 @@ export function AppBar({title}:{title:string}) {
     const navigate=useNavigate();
     return <>
     <div className="w-full flex justify-between items-center h-20 shadow-md">
-    <Link to={'/blog'}> <div className="flex justify-between items-center pl-14 gap-3 cursor-pointer">
-        <img className="w-16 h-10" src="/medium-logo-F0ACFCCD58-seeklogo.com.png"/>
-        <div className="text-xl font-semibold">Medium</div>
+    <Link to={'/blog'}> <div className="flex justify-between items-center pl-10 md:pl-14 gap-3 cursor-pointer">
+        <img className="md:w-16 w-12 h-7 md:h-10" src="/medium-logo-F0ACFCCD58-seeklogo.com.png"/>
+        <div className="text-xl font-semibold hidden md:block">Medium</div>
         
      </div></Link>
-     <div className="flex justify-between items-center pr-12 gap-5">
+     <div className="flex justify-between items-center pr-4 md:pr-12 gap-2 md:gap-5">
         <button onClick={()=>{
             navigate('/blog/Create')
-        }}className="w-20  p-2 rounded-2xl text-xs bg-black hover:bg-slate-800 text-white font-normal" >
+        }}className="md:w-20 w-16 font-thin  p-1 px-1.5 md:p-2 rounded-2xl text-xs bg-black hover:bg-slate-800 text-white md:font-normal" >
             {title}
         </button>
         <div >
-         <BsThreeDots className="w-10 h-6 "></BsThreeDots>
+         <BsThreeDots className="md:w-10 md:h-6 w-7 h-5"></BsThreeDots>
         </div>
         <div >
-        <IoIosNotificationsOutline className="w-8 h-6 "/>
+        <IoIosNotificationsOutline className="md:w-8 md:h-6 w-6 h-4 "/>
         </div>
-        <div className="w-9 h-9 rounded-full bg-black">
+        <div className="md:w-9 md:h-9 w-6 h-6 rounded-full bg-black">
 
         </div>
 

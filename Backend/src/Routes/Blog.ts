@@ -19,7 +19,6 @@ BlogRoute.use("/*", async (c, next) => {
   try {
     const jwttoken = token?.split(" ")[1];
     const CheckingToken = await verify(jwttoken, c.env.JWT_SECRET_KEY);
-    console.log(CheckingToken)
     if (CheckingToken) {
       c.set("userid", CheckingToken.userid);
       await next();
@@ -129,10 +128,14 @@ BlogRoute.put("/", async (c) => {
 
 //Todo : add Pagination
 BlogRoute.get("/bulk", async (c) => {
+  const {page}=c.req.query();
   const prisma = new PrismaClient({
     datasourceUrl: c.env.DATABASE_URL,
   }).$extends(withAccelerate());
-
+  
+  const limit=5;
+  let firstIndex=0;
+  let LastIndex=limit-1;;
   try {
     const AllBlogs = await prisma.blog.findMany({
       select:{
@@ -147,12 +150,27 @@ BlogRoute.get("/bulk", async (c) => {
         }
       }
     });
+   
+    if (Number(page)>1){
+      firstIndex=(Number(page)-1)*limit
+      LastIndex=Number(page)*limit-1
+    }
+
+    if (LastIndex>=AllBlogs.length){
+      LastIndex=AllBlogs.length-1;
+    }
+
+  
+   
+    const BLogSent=AllBlogs.slice(firstIndex,LastIndex+1)
 
     return c.json({
-      AllBlogs: AllBlogs,
+      AllBlogs:BLogSent,
+      Bloglength:AllBlogs.length
     });
   } catch (error) {
     c.status(411);
+    console.log(error)
     return c.json({
       message: "Error while fetching all blogs. Please try again.",
       details: error,
