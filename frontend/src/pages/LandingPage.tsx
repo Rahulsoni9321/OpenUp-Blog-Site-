@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import { Auth } from "../Component/Auth";
-import { Quote } from "../Component/Quote";
+import { WelcomePage } from "../Component/WelcomePage";
 
-export function Signin() {
+export function LandingPage() {
     const [loader,setloader]=useState(true);
   
     useEffect(()=>{
        setTimeout(() => {
         setloader(false)
-       }, 300);
+       }, 400);
   
       }
     ,[])
@@ -22,16 +21,6 @@ export function Signin() {
        </div>
        }
     return <>
-    <div className="grid grid-cols-1 md:grid-cols-2 overflow-y-auto">
-        <div className="col-span-2 md:col-span-1 overflow-auto">
-
-        <Auth authtype="signin"></Auth>
-        </div>
-     <div className="hidden md:block overflow-auto">  
-        <Quote></Quote>
-        </div>
-    </div>
+    <WelcomePage></WelcomePage>
     </>
 }
-
-

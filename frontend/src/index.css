@@ -13,7 +13,7 @@
  
 
   ::-webkit-scrollbar {
-	width: 5px;
+	width: 3px;
 }
 
 ::-webkit-scrollbar-track {
@@ -27,4 +27,18 @@
 
 ::-webkit-scrollbar-thumb:hover {
 	background: #242424;
+}
+
+.hide-scroll-bar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+  }
+  .hide-scroll-bar::-webkit-scrollbar {
+	display: none;
+  }
+
+  .quill > .ql-container > .ql-editor.ql-blank::before{
+    font-size: 14px;
+    color: rgb(188, 188, 188);
+	font-family: sans-serif;
 }

@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import {UserRoute} from "./Routes/User"
 import {BlogRoute} from "./Routes/Blog"
+import { UnAuthenticBlogRoute } from "./Routes/BlogunAuthentic";
 
 const app = new Hono<{
   Bindings: {
@@ -14,6 +15,7 @@ const app = new Hono<{
 app.use("/*",cors());
 app.route('/user',UserRoute);
 app.route('/blog',BlogRoute);
+app.route('/explore',UnAuthenticBlogRoute);
 
 
 

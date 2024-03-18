@@ -3,6 +3,7 @@ import { useBlog } from "../Hooks/ParticularBlog"
 import { ParticularBlog } from "../Component/ParticularBlog";
 import { useParams } from "react-router-dom";
 import { AppBar } from "../Component/AppBar";
+import { UserContextProvider } from "../Context/Authuser";
 
 export function Blog() {
     const {id}=useParams();
@@ -10,7 +11,7 @@ export function Blog() {
     
     if (loading || !blog){
         return <>
-        <div className="  bg-white-300 rounded-md bg-slate-500 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-30 border border-gray-100">
+        <div className=" ">
           <AppBar title="New Blog"></AppBar>
         </div>
       
@@ -21,7 +22,10 @@ export function Blog() {
         </>
     }
     
-    return <>
+     
+    return <UserContextProvider>
+    <div className="dark:bg-gradient-to-r dark:from-[#000000]/90  dark:to-slate-600/90 overflow-y-auto">
        <ParticularBlog  Blog={blog}  ></ParticularBlog>
-    </>
+    </div>
+    </UserContextProvider> 
 }
