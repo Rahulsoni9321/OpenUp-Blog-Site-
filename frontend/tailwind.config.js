@@ -6,7 +6,7 @@ export default {
   ],
   
     daisyui: {
-      themes: ["dark",'light'],
+      theme:["dark","light"]
     },
     
   

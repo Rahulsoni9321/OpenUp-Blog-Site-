@@ -135,7 +135,7 @@ BlogRoute.get("/bulk", async (c) => {
   
   const limit=5;
   let firstIndex=0;
-  let LastIndex=limit-1;;
+  let LastIndex=limit-1;
   try {
     const AllBlogs = await prisma.blog.findMany({
       select:{
@@ -162,7 +162,7 @@ BlogRoute.get("/bulk", async (c) => {
 
   
    
-    const BLogSent=AllBlogs.slice(firstIndex,LastIndex+1)
+    const BLogSent=AllBlogs.reverse().slice(firstIndex,LastIndex+1)
 
     return c.json({
       AllBlogs:BLogSent,

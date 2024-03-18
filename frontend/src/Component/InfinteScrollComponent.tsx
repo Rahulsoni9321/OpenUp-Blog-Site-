@@ -44,9 +44,9 @@ export function InfiniteScrollcomponent() {
             hasMore={Allblog.length < Allbloglength}
             dataLength={Allblog.length + 2}
             loader={
-              <div className="flex justify-center  h-10 mt-8 gap-3 w-full items-center">
+              <div className="flex justify-center  h-10 mt-8 mb-4 gap-3 w-full items-center">
                 <div
-                  className="animate-spin  inline-block w-7 h-7  border-[3px] border-current border-t-transparent text-black rounded-full "
+                  className="animate-spin  inline-block w-7 h-7  border-[3px] border-current border-t-transparent text-gray-200 rounded-full "
                   role="status"
                   aria-label="loading"
                 >
@@ -66,7 +66,7 @@ export function InfiniteScrollcomponent() {
                 return (
                   <>
                     {" "}
-                    <div className="w-11/12 md:w-10/12 infinite-scroll  cursor-pointer hover:shadow-xl rounded-sm hover:bg-slate-200">
+                    <div className="w-11/12 md:w-10/12 infinite-scroll  cursor-pointer hover:shadow-xl rounded-sm dark:hover:bg-slate-800 hover:bg-slate-200 ">
                       <BlogCard
                         id={blog.id}
                         AuthorFirstName={blog.Author.FirstName}

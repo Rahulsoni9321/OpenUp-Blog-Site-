@@ -7,7 +7,7 @@ export const ParticularBlog = ({ Blog }: { Blog: typeBlog }) => {
     <>
       <div className="font-sans w-full">
         <div className="">
-          <AppBar title="New Blog"></AppBar>
+          <AppBar title="Write"></AppBar>
         </div>
         <div className="flex justify-between p-10 md:p-20 gap-3 w-full">
           <div className="Blog md:border-r md:border-black dark:md:border-white w-11/12  md:w-3/4">

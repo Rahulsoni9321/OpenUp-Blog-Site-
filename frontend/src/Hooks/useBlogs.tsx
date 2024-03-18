@@ -32,7 +32,6 @@ export const UseBlogs=()=>{
         });
         setAllblog(response.data.AllBlogs);
         setAllbloglength(response.data.Bloglength)
-        console.log("how many times")
         setloading(false);
       }
       Allblog();

@@ -36,3 +36,9 @@
   .hide-scroll-bar::-webkit-scrollbar {
 	display: none;
   }
+
+  .quill > .ql-container > .ql-editor.ql-blank::before{
+    font-size: 14px;
+    color: rgb(188, 188, 188);
+	font-family: sans-serif;
+}

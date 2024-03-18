@@ -8,15 +8,17 @@ import { SiginInput, SignupInput } from "@index.developers/common";
   Bindings:{
     DATABASE_URL:string,
     JWT_SECRET_KEY:string
+  },
+  Variables:{
+    authorid:string
   }
 }>();
 
-async function Middleware(c:any, next:any) {
+UserRoute.use('/userprofile/*',async (c:any, next:any)=>{
   const token = c.req.header("authorization") || "";
   try {
     const jwttoken = token?.split(" ")[1];
     const CheckingToken = await verify(jwttoken, c.env.JWT_SECRET_KEY);
-    console.log(CheckingToken)
     if (CheckingToken) {
       c.set("authorid", CheckingToken.userid);
       await next();
@@ -34,7 +36,7 @@ async function Middleware(c:any, next:any) {
       details: error,
     });
   }
-};
+});
 
 
 UserRoute.post("/signup", async (c) => {
@@ -152,6 +154,43 @@ UserRoute.post("/signup", async (c) => {
   
   });
   
+
+  UserRoute.get('/userprofile',async (c)=>{
+       const userid=c.get("authorid");
+       const prisma = new PrismaClient({
+        datasourceUrl: c.env.DATABASE_URL,
+      }).$extends(withAccelerate());
+
+     try
+     {
+       const userdetails = await prisma.user.findFirst({
+        where:{
+          id : Number(userid)
+        },
+        select:{
+          FirstName:true,
+          LastName:true,
+          Bio:true,
+          Blog:true,
+          id:true
+        }
+      })
+
+      return c.json({
+        user:userdetails
+      })
+
+      }
+      catch(error){
+        console.log(error)
+        c.status(400);
+        return c.json({
+          message:"Error while fetching user information. Please Try Again.",
+          details:error
+        })
+      }
+       
+  })
 
 
 
