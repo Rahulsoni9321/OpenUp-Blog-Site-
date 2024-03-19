@@ -78,9 +78,12 @@ export function AppBar({ title }: { title: string }) {
               </li>
               <li>
                 <div
-                  onClick={() =>
-                    document.getElementById("my_modal_1").showModal()
-                  }
+                  onClick={() => {
+                    const modal = document.getElementById("my_modal_1") as HTMLDialogElement | null;
+                    if (modal){
+                      modal.showModal()
+                    }
+                  }}
                   className="text-black dark:text-white hover:bg-opacity-30"
                 >
                   Logout

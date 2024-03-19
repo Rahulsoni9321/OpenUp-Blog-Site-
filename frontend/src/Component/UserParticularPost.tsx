@@ -39,7 +39,10 @@ function BlogChange({ blogid }: { blogid: number }) {
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    document.getElementById("my_modal_2").showModal();
+    const modal = document.getElementById("my_modal_2") as HTMLDialogElement | null;
+    if (modal){
+       modal.showModal();
+    }
   };
 
   const handledeleteevent = async () => {
