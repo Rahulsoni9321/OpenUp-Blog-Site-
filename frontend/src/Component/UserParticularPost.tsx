@@ -47,7 +47,7 @@ function BlogChange({ blogid }: { blogid: number }) {
 
   const handledeleteevent = async () => {
     toast.loading('Deleting blog...',{
-      duration:2000
+      duration:1000
     })
     try {
       const response = await axios.delete(`${BACKEND_URL}/blog`, {
@@ -105,12 +105,12 @@ function BlogChange({ blogid }: { blogid: number }) {
               id="my_modal_2"
               className="modal w-full flex justify-center items-center  bg-black rounded-none bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-25"
             >
-              <div className="modal-box w-1/3 text-center bg-black/50   bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-80 ">
-                <h3 className="font-bold  text-gray-200 text-md md:text-3xl">
+              <div className="modal-box w-3/4 md:1/3 sm:w-1/2 text-center bg-black/50   bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-80 ">
+                <h3 className="font-bold  text-gray-200 text-xl sm:text-3xl">
                   Are you sure you want to delete this post?
                 </h3>
                 <br></br>
-                <p className="text-red-500 text-sm font-normal">
+                <p className="text-red-500 text-xs md:text-sm font-normal">
                   The action is irreversible and will result in permanent loss
                   of data.
                 </p>

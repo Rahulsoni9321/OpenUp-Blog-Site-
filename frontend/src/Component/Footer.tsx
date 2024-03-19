@@ -6,7 +6,7 @@ export const Foooter=()=>{
       <div className="flex gap-2 items-center">
         <img
           src="/medium-logo-F0ACFCCD58-seeklogo.com.png"
-          className="w-12 h-8 invert"
+          className="w-9 h-6 md:w-12 md:h-8 invert"
         ></img>
         <div className="font-semibold text-xl">Open Up</div>
       </div>

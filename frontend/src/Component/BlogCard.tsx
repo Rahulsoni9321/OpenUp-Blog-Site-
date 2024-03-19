@@ -17,7 +17,7 @@ interface BlogCardProp {
         <div  className="w-full  h-56 font-sans p-6 border-b border-gray-500 hover:border-none relative">
           <div className="flex items-center gap-2 text-sm text-black font-normal pb-3">
             <div className="w-8 h-8 rounded-full bg-black text-white flex justify-center items-center"><div>{AuthorFirstName[0]}</div></div>
-            <p className="dark:text-gray-100 text-gray-950 text-md">
+            <p className="dark:text-gray-100 text-gray-950 text-sm xs:text-md">
               {AuthorFirstName} {AuthorLastName} <span className="px-1">·</span>
             </p>
             <p className=" dark:text-gray-300 text-zinc-400 opacity-50 text-xs">{PublishedDate}</p>

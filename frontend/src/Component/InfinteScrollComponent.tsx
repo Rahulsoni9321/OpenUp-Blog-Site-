@@ -37,7 +37,7 @@ export function InfiniteScrollcomponent() {
   
     return (
       <>
-        <div className="infinte-scroll overflow-y-scroll  m-10 ml-20 ">
+        <div className="infinte-scroll overflow-y-scroll  mt-10 md:m-10 ml-6 md:ml-20 ">
           <InfiniteScroll
             className=""
             next={FetchData}
@@ -66,7 +66,7 @@ export function InfiniteScrollcomponent() {
                 return (
                   <>
                     {" "}
-                    <div className="w-11/12 md:w-10/12 px-4 infinite-scroll  cursor-pointer hover:shadow-xl rounded-md dark:hover:bg-gray-400/20 hover:bg-slate-200 transform transition duration-200 hover:scale-105">
+                    <div className="w-full md:w-10/12 px-4 infinite-scroll  cursor-pointer hover:shadow-xl rounded-md dark:hover:bg-gray-400/20 hover:bg-slate-200 transform transition duration-200 hover:scale-105">
                       <BlogCard
                         id={blog.id}
                         AuthorFirstName={blog.Author.FirstName}

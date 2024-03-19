@@ -58,14 +58,14 @@ catch (error){
     return (
         <>
           
-            <div className="flex justify-center pt-12 px-20 font-serif">
-                <div className="w-10/12">
+            <div className="flex justify-center pt-12  px-6 md:px-20 font-serif">
+                <div className="w-11/12 md:w-10/12">
                     <input
                         onChange={(e) => {
                             settitle(e.target.value);
                         }}
                         type="text"
-                        className="w-10/12 outline-none bg-gray-800/5  border-none text-6xl dark:text-gray-200 text-black placeholder-gray-500 dark:placeholder-gray-100 dark:placeholder-opacity-55 placeholder-opacity-50 my-4"
+                        className="w-11/12 outline-none bg-gray-800/5  border-none text-5xl md:text-6xl dark:text-gray-200 text-black placeholder-gray-500 dark:placeholder-gray-100 dark:placeholder-opacity-55 placeholder-opacity-50 my-4"
                         placeholder="Title"
                     ></input>
                     <div className="w-full">
@@ -103,7 +103,7 @@ function TextEditor({content,setcontent}:{
 }) {
 
     return (<>
-        <ReactQuill theme="snow" value={content} onChange={setcontent}  placeholder="Tell your story....." className="text-xl overflow-y-auto dark:text-gray-100 text-gray-800  w-11/12 h-lvh "/>
+        <ReactQuill theme="snow" value={content} onChange={setcontent}  placeholder="Tell your story....." className="text-xl overflow-y-auto dark:text-gray-100 text-gray-800  w-full md:w-11/12 h-lvh "/>
 
         
         </>

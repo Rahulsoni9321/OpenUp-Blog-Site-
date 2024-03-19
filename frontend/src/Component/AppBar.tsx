@@ -94,7 +94,7 @@ export function AppBar({ title }: { title: string }) {
                   id="my_modal_1"
                   className="modal w-full flex justify-center items-center  bg-black/20 rounded-none bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10"
                 >
-                  <div className="modal-box w-1/3 text-center bg-black/40   bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-70 ">
+                  <div className="modal-box w-3/4 sm:w-1/3 text-center bg-black/40   bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-70 ">
                     <h3 className="font-bold  text-gray-200 text-md md:text-2xl">
                       Are you sure you want to Logout?
                     </h3>

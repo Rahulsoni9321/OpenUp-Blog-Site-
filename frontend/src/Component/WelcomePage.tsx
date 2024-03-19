@@ -21,7 +21,7 @@ export const WelcomePage = () => {
         <LandingAppBar id={"section1"}></LandingAppBar>
         </div>
         <div className=" flex-grow bg-[url(/image.jpeg)] bg-cover bg-center bg-no-repeat ">
-          <div className="flex items-center h-full w-full bg-gradient-to-l from-black/10 via-black/80 to-black pl-40">
+          <div className="flex items-center h-full w-full bg-gradient-to-l from-black/10 via-black/80 to-black justify-center md:justify-normal pl-10 md:pl-40">
             <div className="flex flex-col gap-4  text-white">
               <h1 className="text-8xl font-semibold bg-gradient-to-r from-white  to-slate-800 inline-block text-transparent bg-clip-text ">
                 SHARE
