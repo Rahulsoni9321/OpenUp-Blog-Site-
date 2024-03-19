@@ -9,7 +9,9 @@ export interface typeBlog{
         "id": number,
         "Author": {
             "FirstName": string,
-            "LastName": string
+            "LastName": string,
+            "Bio":string,
+            "id":number
         }
     }
 

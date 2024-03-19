@@ -1,12 +1,18 @@
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 import { TfiWrite } from "react-icons/tfi";
-import { toast } from "react-hot-toast";
 import { UseUserContext } from "../Context/Authuser";
+import { useAuth } from "../Context/useAuth";
 
 export function AppBar({ title }: { title: string }) {
   const { userdetails, detailsloading } = UseUserContext();
+  const {logout}=useAuth();
+
   const navigate = useNavigate();
+
+  const handlelogout=()=>{
+    logout();
+  }
   return (
     <>
       <div className=" flex  justify-between items-center h-20 shadow-md font-sans  z-10  bg-[#1d2226] rounded-none bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-60 border-b border-black ">
@@ -63,10 +69,10 @@ export function AppBar({ title }: { title: string }) {
             </div>
             <ul
               tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow  rounded-box w-44   bg-slate-500 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-30 "
+              className="dropdown-content z-[1] menu p-2 shadow  rounded-box w-44   bg-black/70 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-30 "
             >
               <li>
-               <Link to={`/${userdetails?.FirstName}`}> <div className="text-black dark:text-white  hover:backdrop-filter hover:backdrop-blur-lg hover:bg-opacity-30">
+               <Link to={`/${userdetails?.FirstName}`}> <div className="text-black dark:text-white   hover:bg-opacity-30">
                   Profile
                 </div></Link>
               </li>
@@ -75,16 +81,16 @@ export function AppBar({ title }: { title: string }) {
                   onClick={() =>
                     document.getElementById("my_modal_1").showModal()
                   }
-                  className="text-black dark:text-white hover:backdrop-filter hover:backdrop-blur-lg hover:bg-opacity-30"
+                  className="text-black dark:text-white hover:bg-opacity-30"
                 >
                   Logout
                 </div>
 
                 <dialog
                   id="my_modal_1"
-                  className="modal w-full flex justify-center items-center  bg-gray-700 rounded-none bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-25"
+                  className="modal w-full flex justify-center items-center  bg-black/20 rounded-none bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10"
                 >
-                  <div className="modal-box w-1/4 text-center bg-gray-700   bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-70 ">
+                  <div className="modal-box w-1/3 text-center bg-black/40   bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-70 ">
                     <h3 className="font-bold  text-gray-200 text-md md:text-2xl">
                       Are you sure you want to Logout?
                     </h3>
@@ -93,17 +99,8 @@ export function AppBar({ title }: { title: string }) {
                     <div className="modal-action">
                       <form method="dialog" className="w-full">
                         <button
-                          className="btn bg-gray-300 w-5/12 text-gray-900 mr-2 hover:rounded-none hover:bg-gray-100 border-none rounded-full outline-none"
-                          onClick={async () => {
-                            localStorage.removeItem("token");
-                            await new Promise<void>((resolve) => {
-                              setTimeout(() => {
-                                resolve();
-                              }, 500);
-                            });
-                            toast.success("Logged out successfully.");
-                            navigate("/", { replace: true });
-                          }}
+                          className="btn bg-gray-300 w-5/12 text-gray-900 mr-2 hover:rounded-none hover:text-gray-200  border-none rounded-full outline-none"
+                          onClick={handlelogout}
                         >
                           Yes
                         </button>

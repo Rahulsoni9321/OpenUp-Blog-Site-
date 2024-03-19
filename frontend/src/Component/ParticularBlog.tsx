@@ -9,7 +9,7 @@ export const ParticularBlog = ({ Blog }: { Blog: typeBlog }) => {
         <div className="">
           <AppBar title="Write"></AppBar>
         </div>
-        <div className="flex justify-between p-10 md:p-20 gap-3 w-full">
+        <div className="flex justify-between p-10 md:py-20 gap-3 w-full">
           <div className="Blog md:border-r md:border-black dark:md:border-white w-11/12  md:w-3/4">
             <div className="md:px-6">
               <div className="text-3xl md:text-5xl w-11/12 dark:text-gray-100 text-black font-extrabold ">
@@ -37,10 +37,10 @@ export const ParticularBlog = ({ Blog }: { Blog: typeBlog }) => {
                 </div>
                 <div>
                   <div className="text-xl dark:text-gray-300 text-black font-extrabold mb-2">
-                    {Blog.Author.FirstName}
+                    {Blog.Author.FirstName} {Blog.Author.LastName}
                   </div>
-                  <div className="text-sm text-gray-500 dark:text-gray-200 font-normal">
-                    This is a dummy anything is the best of the west is the{" "}
+                  <div className="text-sm text-gray-500 dark:text-gray-200 font-normal opacity-65">
+                    {Blog.Author.Bio ? Blog.Author.Bio :  "Software engineer, blogger, and an explorer.✨" } 
                   </div>
                 </div>
               </div>

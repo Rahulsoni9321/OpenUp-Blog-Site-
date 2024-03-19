@@ -42,7 +42,6 @@ export const UserContextProvider = ({ children }:{children:ReactNode}) => {
   useEffect(()=>{
     setloading(true)
     async function fetchdetails(){
-      console.log("hekko")
      const response = await axios.get(`${BACKEND_URL}/user/userprofile`,{
       headers:{
         Authorization:`Bearer ${localStorage.getItem('token')}`

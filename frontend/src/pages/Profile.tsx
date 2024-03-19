@@ -12,7 +12,7 @@ export function Userprofile() {
   }, []);
   if (loader) {
     return (
-      <div className="dark:bg-gradient-to-r dark:from-[#000000]/90  dark:to-slate-600/90 flex justify-center items-center h-screen">
+      <div className="dark:bg-gradient-to-r dark:from-[#000000]/90  dark:to-slate-600/90 flex justify-center items-center h-screen ">
         <div className="flex justify-center  items-center gap-3">
           <span className="loading loading-bars loading-lg"></span>
           <p className="text-lg font-medium">Loading...</p>
@@ -22,7 +22,7 @@ export function Userprofile() {
   }
   return (
     <UserContextProvider>
-      <div className="dark:bg-gradient-to-r dark:from-[#000000]/90  dark:to-slate-600/90">
+      <div className="dark:bg-gradient-to-r dark:from-[#000000]/90  dark:to-slate-600/90 overflow-y-auto h-screen">
         <Userprofilesection></Userprofilesection>
       </div>
     </UserContextProvider>
