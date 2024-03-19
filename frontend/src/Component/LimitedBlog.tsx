@@ -25,7 +25,7 @@ export const LimitedBlogs=()=>{
                         AuthorLastName={blog.Author.LastName}
                         Title={blog.Title}
                         Content={blog.Content}
-                        PublishedDate="20-12-2023"
+                        PublishedDate="20 December 2023"
                       ></BlogCard>
                     </div>
                   </>

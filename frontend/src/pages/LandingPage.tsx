@@ -3,7 +3,8 @@ import { WelcomePage } from "../Component/WelcomePage";
 
 export function LandingPage() {
     const [loader,setloader]=useState(true);
-  
+
+   
     useEffect(()=>{
        setTimeout(() => {
         setloader(false)

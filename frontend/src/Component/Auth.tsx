@@ -28,7 +28,6 @@ export const Auth = ({ authtype }: { authtype: "signin" | "signup" }) => {
           },
         }
       );
-      console.log(response.data.message)
       const jwt = response.data.token;
       
       {authtype==="signin"?toast.success("Signed In successfully"):toast.success("Signed Up successfully")};
