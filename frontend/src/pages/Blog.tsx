@@ -24,7 +24,7 @@ export function Blog() {
     
      
     return <UserContextProvider>
-    <div className="dark:bg-gradient-to-r dark:from-[#000000]/90  dark:to-slate-600/90 overflow-y-auto">
+    <div className="dark:bg-gradient-to-r dark:from-[#000000]/90  dark:to-slate-600/90 h-screen overflow-y-auto">
        <ParticularBlog  Blog={blog}  ></ParticularBlog>
     </div>
     </UserContextProvider> 
