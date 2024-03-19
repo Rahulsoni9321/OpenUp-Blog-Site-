@@ -145,7 +145,9 @@ BlogRoute.get("/bulk", async (c) => {
         Author:{
           select:{
             FirstName:true,
-            LastName:true
+            LastName:true,
+            Bio:true,
+            id:true
           }
         }
       }
@@ -217,3 +219,32 @@ BlogRoute.get("/:id", async (c) => {
 });
 
 
+BlogRoute.delete("/",async (c)=>{
+  const blogid=await c.req.json();
+  const prisma = new PrismaClient({
+    datasourceUrl: c.env.DATABASE_URL,
+  }).$extends(withAccelerate());
+
+  try
+  {
+      const blog=await prisma.blog.delete({
+    where:{
+      id:Number(blogid.id)
+    }
+  })
+
+  return c.json({
+    message:"Blog deleted successfully.",
+    blog:blog
+  })
+}
+  catch(error){
+    console.log(error)
+    c.status(400)
+    return c.json({
+      message:"Something went wrong while deleting the blog.Please try again.",
+      details:error
+    })
+  }
+
+})
