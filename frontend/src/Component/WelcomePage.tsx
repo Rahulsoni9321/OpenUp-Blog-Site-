@@ -39,7 +39,7 @@ export const WelcomePage = () => {
                 <span className="opacity-90 text-lg underline-offset-0">
                     OpenUp.
                 </span>
-                <div className="mt-8"><button onClick={handleclickevent} className="flex items-center gap-2 px-3 py-2 bg-black/90 shadow-xl hover:bg-gray-950 bg-opacity-80 rounded-lg  "><p className="text-md font-semibold bg-gradient-to-r from-white  to-slate-500 text-transparent bg-clip-text">get started </p><MdOutlineStart className="w-6 h-4 opacity-70"/></button></div>
+                <div className="mt-8"><button onClick={handleclickevent} className="flex items-center gap-2 px-3 py-2 bg-black/90 shadow-xl hover:bg-gray-950 bg-opacity-80 rounded-lg  "><p className="text-md font-semibold bg-gradient-to-r from-white  to-slate-500 text-transparent bg-clip-text">Get Started </p><MdOutlineStart className="w-6 h-4 opacity-70"/></button></div>
               </div>
             </div>
           </div>

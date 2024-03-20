@@ -85,7 +85,7 @@ export const Auth = ({ authtype }: { authtype: "signin" | "signup" }) => {
             ></LabelledInput>
             <LabelledInput
               authtype={authtype}
-              label="FirstName"
+              label="First Name"
               placeholder="Enter your firstname..."
               onChange={(e) => {
                 setpostInputs({ ...postInputs, FirstName: e.target.value });
@@ -93,7 +93,7 @@ export const Auth = ({ authtype }: { authtype: "signin" | "signup" }) => {
             ></LabelledInput>
             <LabelledInput
               authtype={authtype}
-              label="LastName"
+              label="Last Name"
               placeholder="Enter your lastname..."
               onChange={(e) => {
                 setpostInputs({ ...postInputs, LastName: e.target.value });
