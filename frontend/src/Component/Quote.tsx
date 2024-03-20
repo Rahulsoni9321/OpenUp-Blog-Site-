@@ -60,7 +60,7 @@ function QuoteCard({Quote,Author,Profession}:typeQuoteCard) {
    <div className="flex gap-3 h-full   py-4 items-center  transform transition duration-200 hover:scale-110  overflow-y-auto  rounded-xl">
           <div className="flex-grow  flex justify-center items-center font-sans ">
             <div className="w-10/12 leading-tight flex flex-col justify-center items-center h-full">
-              <div className=" sm:text-xl bg-gradient-to-r from-black/70  to-black inline-block text-transparent bg-clip-text  font-bold ">
+              <div className=" sm:text-xl bg-gradient-to-r from-[#2c2c2c]   to-[#000000] inline-block text-transparent bg-clip-text  font-bold ">
               &quot; {Quote} &quot;
                </div>
               <div className=" sm:text-lg text-black opacity-70 font-semibold mt-6">

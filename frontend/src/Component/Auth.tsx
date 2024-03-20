@@ -4,8 +4,10 @@ import { typeSignupInput } from "@index.developers/common";
 import axios from "axios";
 import { BACKEND_URL } from "../config";
 import {toast} from "react-hot-toast"
+import { useAuth } from "../Context/useAuth";
 
 export const Auth = ({ authtype }: { authtype: "signin" | "signup" }) => {
+  const {login}=useAuth();
   const navigate = useNavigate();
   const [message,setmessage]=useState("")
   const [tracker,settracker]=useState(false)
@@ -32,7 +34,7 @@ export const Auth = ({ authtype }: { authtype: "signin" | "signup" }) => {
       
       {authtype==="signin"?toast.success("Signed In successfully"):toast.success("Signed Up successfully")};
       settracker(false)
-      localStorage.setItem("token", jwt);
+      login(jwt);
       navigate("/Blog");
     } catch (error: any) {
         if (error && error.response && error.response.data) {

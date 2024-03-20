@@ -28,7 +28,7 @@ function App() {
       <Route path="/Blog/:id" element={<Blog></Blog>}></Route>
       <Route path="/:name" element={<Userprofile></Userprofile>}></Route>
       <Route path="/YourBlog/:id" element={<UserBlog></UserBlog>}></Route>
-      <Route path="/Blog" element={<AllBlogs></AllBlogs>}></Route>
+      <Route path="/Blog" element={authenticated?<AllBlogs></AllBlogs>:<Navigate to={'/'}/>}></Route>
       <Route path="/Blog/Create" element={<CreateBlog/>}></Route>
      </Routes>
      <Toaster></Toaster>
