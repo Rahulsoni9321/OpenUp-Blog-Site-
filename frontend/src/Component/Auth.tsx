@@ -153,7 +153,7 @@ function LabelledInput({
   return (
     <div
       className={
-        authtype === "signin" && (label === "FirstName" || label === "LastName")
+        authtype === "signin" && (label === "First Name" || label === "Last Name")
           ? "hidden"
           : "my-2"
       }
