@@ -8,6 +8,9 @@ import { BACKEND_URL } from "../config";
 import toast from "react-hot-toast";
 
 export const UserParticularPost = ({ Blog }: { Blog: typeBlog }) => {
+  const timestring=Blog.Time;
+    const datepart=new Date(timestring)
+    const date=datepart.toDateString();
   return (
     <div className="font-sans w-full flex-grow flex justify-center pb-8 ">
       <div className="w-11/12  md:w-10/12 pt-12 ">
@@ -19,7 +22,7 @@ export const UserParticularPost = ({ Blog }: { Blog: typeBlog }) => {
             <BlogChange blogid={Blog.id}></BlogChange>
           </div>
           <div className="flex gap-2 items-center text-xs md:text-sm text-gray-700 dark:text-gray-400 font-normal my-12">
-            Posted on {Blog.Time.toDateString()} <span className="px-0.5">·</span>
+            Posted on {date} <span className="px-0.5">·</span>
             <div className="text-xs bg-gray-300 text-gray-700 p-1 rounded-md font-normal line-clamp-1">
               {Math.ceil(Blog.Content.length / 400)} minutes read
             </div>
