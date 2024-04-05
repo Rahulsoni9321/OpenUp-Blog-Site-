@@ -68,6 +68,7 @@ UserRoute.post("/signup", async (c) => {
        data:{
          FirstName:body.FirstName,
          LastName:body.LastName,
+         Bio:body.Bio,
          Email:body.Email,
          Password:body.Password,
        }

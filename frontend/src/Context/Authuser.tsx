@@ -12,6 +12,7 @@ export interface UserDetails {
       Title: string;
       Content: string;
       Published: boolean;
+      Time:Date,
       id: number;
     }
   ];

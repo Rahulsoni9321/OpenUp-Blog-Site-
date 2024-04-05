@@ -6,7 +6,8 @@ exports.SignupInput = zod_1.z.object({
     FirstName: zod_1.z.string(),
     LastName: zod_1.z.string(),
     Email: zod_1.z.string().email(),
-    Password: zod_1.z.string().min(6, { message: "Password is too short just like your dick." }).max(16)
+    Bio: zod_1.z.string().max(100, { message: "Bio should be within 100 characters." }),
+    Password: zod_1.z.string().min(6, { message: "Password is too short." }).max(16)
 });
 exports.SiginInput = zod_1.z.object({
     Email: zod_1.z.string().email(),

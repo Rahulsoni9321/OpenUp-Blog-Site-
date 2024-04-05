@@ -73,7 +73,7 @@ export function InfiniteScrollcomponent() {
                         AuthorLastName={blog.Author.LastName}
                         Title={blog.Title}
                         Content={blog.Content}
-                        PublishedDate="31 August 2023"
+                        PublishedDate={blog.Time}
                       ></BlogCard>
                     </div>
                   </>

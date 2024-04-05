@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@index.developers/common": "^1.0.2",
+    "@index.developers/common": "^1.0.4",
     "@types/slick-carousel": "^1.6.40",
     "axios": "^1.6.7",
     "quill": "^2.0.0-rc.2",

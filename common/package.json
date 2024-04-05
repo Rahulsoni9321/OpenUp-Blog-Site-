@@ -1,6 +1,6 @@
 {
   "name": "@index.developers/common",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "",
   "main": "dist/index.js",
   "scripts": {

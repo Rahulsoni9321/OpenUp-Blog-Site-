@@ -43,7 +43,7 @@ export const Userprofilesection = ()=>{
                {
                 userdetails.Blog && userdetails.Blog.length>0 ? (
                 userdetails.Blog.map((blog)=>{
-                     return <PostCard title={blog.Title} content={blog.Content} publisheddate="22nd October 2023" blogid={blog.id} ></PostCard> 
+                     return <PostCard title={blog.Title} content={blog.Content} publisheddate={blog.Time} blogid={blog.id} ></PostCard> 
                 })):
                 <div className="text-2xl md:text-3xl  font-semibold text-center text-gray-650 mt-12">Nothing to show here. <span className="cursor-pointer text-cyan-300" onClick={()=>navigate('/Blog/Create')}>Write?</span></div>
                } 

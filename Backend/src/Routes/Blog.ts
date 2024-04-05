@@ -53,6 +53,7 @@ BlogRoute.post("/", async (c) => {
       data: {
         Title: body.Title,
         Content: body.Content,
+        Time:new Date(),
         AuthorId: Number(authorid),
         Published: true,
       },
@@ -141,6 +142,7 @@ BlogRoute.get("/bulk", async (c) => {
       select:{
         Content:true,
         Title:true,
+        Time:true,
         id:true,
         Author:{
           select:{
@@ -193,6 +195,7 @@ BlogRoute.get("/:id", async (c) => {
       select:{
         Content:true,
         Title:true,
+        Time:true,
         id:true,
         Author:{
           select:{

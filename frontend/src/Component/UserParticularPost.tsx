@@ -19,7 +19,7 @@ export const UserParticularPost = ({ Blog }: { Blog: typeBlog }) => {
             <BlogChange blogid={Blog.id}></BlogChange>
           </div>
           <div className="flex gap-2 items-center text-xs md:text-sm text-gray-700 dark:text-gray-400 font-normal my-12">
-            Posted on August 22,2023 <span className="px-0.5">·</span>
+            Posted on {Blog.Time.toDateString()} <span className="px-0.5">·</span>
             <div className="text-xs bg-gray-300 text-gray-700 p-1 rounded-md font-normal line-clamp-1">
               {Math.ceil(Blog.Content.length / 400)} minutes read
             </div>

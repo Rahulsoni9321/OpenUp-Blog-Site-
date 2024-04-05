@@ -5,12 +5,16 @@ interface BlogCardProp {
     AuthorLastName: string;
     Title: string;
     Content: string;
-    PublishedDate: string;
+    PublishedDate: Date;
     id:number
   }
   
   
-  export function BlogCard({ AuthorFirstName,AuthorLastName, Title, Content, PublishedDate,id }: BlogCardProp) {
+  export function BlogCard({ AuthorFirstName,AuthorLastName, Title, Content, PublishedDate,id }: BlogCardProp) {  
+    const timestring = PublishedDate;
+    const dateTime = new Date(timestring);
+    const date = dateTime.toDateString();
+
     return (
       <>
       <Link to={localStorage.getItem('token')?`/blog/${id}`:"/signin"}>
@@ -20,7 +24,7 @@ interface BlogCardProp {
             <p className="dark:text-gray-100 text-gray-950 text-sm xs:text-md">
               {AuthorFirstName} {AuthorLastName} <span className="px-1">·</span>
             </p>
-            <p className=" dark:text-gray-300 text-zinc-400 opacity-50 text-xs">{PublishedDate}</p>
+            <p className=" dark:text-gray-300 text-zinc-400 opacity-50 text-xs">{date}</p>
           </div>
           <div className="line-clamp-4 ">
           <div className="text-xl md:text-3xl mb-0.5 dark:text-gray-100 text-gray-950  font-bold w-11/12">{Title}</div>

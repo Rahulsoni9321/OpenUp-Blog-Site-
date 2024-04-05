@@ -23,6 +23,7 @@ UnAuthenticBlogRoute.get("/", async (c) => {
       select: {
         Content: true,
         Title: true,
+        Time: true,
         id: true,
         Author: {
           select: {

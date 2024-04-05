@@ -7,6 +7,7 @@ interface Blog{
     "Content": string,
     "Title": string,
     "id": number,
+    "Time":Date,
     "Author": {
         "FirstName": string,
         "LastName": string,

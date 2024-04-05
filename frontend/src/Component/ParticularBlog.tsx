@@ -3,6 +3,9 @@ import { AppBar } from "./AppBar";
 import { typeBlog } from "../Hooks/useBlogs";
 
 export const ParticularBlog = ({ Blog }: { Blog: typeBlog }) => {
+  const dateTimeString = Blog.Time;
+const dateTime = new Date(dateTimeString);
+const date = dateTime.toDateString();
   return (
     <>
       <div className="font-sans w-full">
@@ -16,7 +19,7 @@ export const ParticularBlog = ({ Blog }: { Blog: typeBlog }) => {
                 {Blog.Title}
               </div>
               <div className="flex gap-2 items-center text-xs md:text-sm text-gray-700 dark:text-gray-400 font-normal mt-8 mb-10">
-                Posted on August 22,2023{" "} <span className="px-0.5">·</span>
+                Posted on {date}{" "} <span className="px-0.5">·</span>
                 <div className="text-xs bg-gray-300 text-gray-700 p-1 rounded-md font-normal line-clamp-1">
                   {Math.ceil(Blog.Content.length / 400)} minutes read
                 </div>

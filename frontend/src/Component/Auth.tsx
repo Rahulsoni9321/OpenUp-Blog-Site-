@@ -15,6 +15,7 @@ export const Auth = ({ authtype }: { authtype: "signin" | "signup" }) => {
     Email: "",
     FirstName: "",
     LastName: "",
+    Bio:"",
     Password: "",
   });
 
@@ -99,6 +100,12 @@ export const Auth = ({ authtype }: { authtype: "signin" | "signup" }) => {
                 setpostInputs({ ...postInputs, LastName: e.target.value });
               }}
             ></LabelledInput>
+            <div className="   text-xs font-semibold text-gray-900 dark:text-gray-200">Bio</div>
+            <textarea onChange={(e)=>{
+              setpostInputs({...postInputs,Bio:e.target.value})
+            }} placeholder="Enter Bio..." className={authtype==="signup" ? `mt-1 bg-gray-100 w-11/12 md:w-10/12 text-xs border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500   px-2.5 py-1 dark:focus:ring-blue-500 dark:focus:border-blue-500 `:"hidden"}>
+
+            </textarea>
             <LabelledInput
               label="Password"
               placeholder="Enter your password...."
